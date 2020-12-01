@@ -11,7 +11,8 @@ namespace ProyectoReservaTicket.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Evento
     {
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2214:DoNotCallOverridableMethodsInConstructors")]
@@ -19,11 +20,13 @@ namespace ProyectoReservaTicket.Models
         {
             this.Reserva = new HashSet<Reserva>();
         }
-    
+        [Display(Name = "Evento ID")]
         public int EventoID { get; set; }
         public string Nombre { get; set; }
+        [Display(Name = "Fecha Evento")]
         public System.DateTime FechaEvento { get; set; }
         public string Lugar { get; set; }
+        [Display(Name = "Costo Entrada")]
         public decimal CostoEntrada { get; set; }
     
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
