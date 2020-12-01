@@ -24,6 +24,7 @@ namespace ProyectoReservaTicket.Models
         [Display(Name = "Evento ID")]
         public int EventoID { get; set; }
         public string Nombre { get; set; }
+        [Display(Name = "Fecha Evento")]
         public System.DateTime FechaEvento { get; set; }
         public string Lugar { get; set; }
         [Display(Name = "Costo Entrada")]
