@@ -193,6 +193,9 @@
     <Compile Include="Models\Animador.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\Consulta.cs">
+      <DependentUpon>Modelo.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\Evento.cs">
       <DependentUpon>Modelo.tt</DependentUpon>
     </Compile>

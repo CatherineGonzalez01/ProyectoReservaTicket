@@ -14,6 +14,16 @@
           <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
           <Property Name="Telefono" Type="nchar" MaxLength="10" />
         </EntityType>
+        <EntityType Name="Consulta">
+          <Key>
+            <PropertyRef Name="consultaID" />
+          </Key>
+          <Property Name="consultaID" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" />
+          <Property Name="Telefono" Type="varchar" MaxLength="20" />
+          <Property Name="consulta" Type="text" />
+        </EntityType>
         <EntityType Name="Evento">
           <Key>
             <PropertyRef Name="EventoID" />
@@ -52,6 +62,7 @@
         </Association>
         <EntityContainer Name="ReservaTicketModelStoreContainer">
           <EntitySet Name="Animador" EntityType="Self.Animador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Consulta" EntityType="Self.Consulta" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Evento" EntityType="Self.Evento" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Reserva" EntityType="Self.Reserva" Schema="dbo" store:Type="Tables" />
           <AssociationSet Name="FK_Reserva_Evento" Association="Self.FK_Reserva_Evento">
@@ -109,6 +120,7 @@
             <End Role="Reserva" EntitySet="Reserva" />
           </AssociationSet>
           <EntitySet Name="Animador" EntityType="ReservaTicketModel.Animador" />
+          <EntitySet Name="Consulta" EntityType="ReservaTicketModel.Consulta" />
         </EntityContainer>
         <EntityType Name="Animador">
           <Key>
@@ -118,6 +130,16 @@
           <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
           <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+        <EntityType Name="Consulta">
+          <Key>
+            <PropertyRef Name="consultaID" />
+          </Key>
+          <Property Name="consultaID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="20" FixedLength="false" Unicode="false" />
+          <Property Name="consulta1" Type="String" MaxLength="Max" FixedLength="false" Unicode="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -158,6 +180,17 @@
                 <ScalarProperty Name="Apellido" ColumnName="Apellido" />
                 <ScalarProperty Name="Nombre" ColumnName="Nombre" />
                 <ScalarProperty Name="animadorID" ColumnName="animadorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Consulta">
+            <EntityTypeMapping TypeName="ReservaTicketModel.Consulta">
+              <MappingFragment StoreEntitySet="Consulta">
+                <ScalarProperty Name="consulta1" ColumnName="consulta" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="consultaID" ColumnName="consultaID" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

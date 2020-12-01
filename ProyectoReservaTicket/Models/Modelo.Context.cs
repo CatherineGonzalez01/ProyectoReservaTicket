@@ -28,5 +28,6 @@ namespace ProyectoReservaTicket.Models
         public virtual DbSet<Evento> Evento { get; set; }
         public virtual DbSet<Reserva> Reserva { get; set; }
         public virtual DbSet<Animador> Animador { get; set; }
+        public virtual DbSet<Consulta> Consulta { get; set; }
     }
 }
