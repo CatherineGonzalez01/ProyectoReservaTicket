@@ -7,16 +7,25 @@
 <br />
 <h2>Contáctanos!</h2>
 
-
-@using (Html.BeginForm()) 
+<div class="form-group" style="float:right; margin-top: 50px;">
+    <div class="container float-right">
+        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3607.5019346701897!2d-57.64531598533868!3d-25.287334933464777!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x945da7f63ae3d5fd%3A0x4dc6c9d6c6fb50cf!2sUniversidad%20Aut%C3%B3noma%20de%20Asunci%C3%B3n%20(UAA)!5e0!3m2!1ses-419!2spy!4v1606841377710!5m2!1ses-419!2spy"
+                width="600" height="400" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    </div>
+    <div class="col-md-10">
+        <label class="control-label">Encontranos en Jejuí 667, entre O’leary y 15 de agosto, C.P. 1255</label>
+    </div>
+</div>
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>Dejá tus consultas y sugerencias aquí abajo</h4>
         <hr />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         <div class="form-group">
+            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
             @Html.LabelFor(model => model.Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Nombre, new { htmlAttributes = new { @class = "form-control" } })
@@ -25,6 +34,7 @@
         </div>
 
         <div class="form-group">
+            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-user bigicon"></i></span>
             @Html.LabelFor(model => model.Apellido, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Apellido, new { htmlAttributes = new { @class = "form-control" } })
@@ -33,6 +43,7 @@
         </div>
 
         <div class="form-group">
+            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-phone"></i></span>
             @Html.LabelFor(model => model.Telefono, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Telefono, new { htmlAttributes = new { @class = "form-control" } })
@@ -41,16 +52,17 @@
         </div>
 
         <div class="form-group">
+            <span class="col-md-1 col-md-offset-2 text-center"><i class="fa fa-comments"></i></span>
             @Html.LabelFor(model => model.consulta, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @Html.TextAreaFor(model => model.consulta, htmlAttributes: new { @class = "form-control" })
                 @Html.ValidationMessageFor(model => model.consulta, "", new { @class = "text-danger" })
             </div>
         </div>
-        
+
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Create" class="btn btn-primary" />
             </div>
         </div>
     </div>

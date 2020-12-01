@@ -11,13 +11,15 @@ namespace ProyectoReservaTicket.Models
 {
     using System;
     using System.Collections.Generic;
-    
+    using System.ComponentModel.DataAnnotations;
+
     public partial class Consultas
     {
         public int consultaID { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Telefono { get; set; }
+        [Display(Name = "Consulta o Sugerencia")]
         public string consulta { get; set; }
     }
 }
