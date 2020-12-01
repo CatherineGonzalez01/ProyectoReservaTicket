@@ -18,20 +18,20 @@
 
         <div class="collapse navbar-collapse" id="navbarColor01">
             <ul class="nav navbar-nav mr-auto">
-                <li>
-                    @Html.ActionLink("Inicio", "Index", "Home", new { @class = "nav-link" })
+                <li class="nav-link">
+                    @Html.ActionLink("Inicio", "Index", "Home")
                 </li>
-                <li>
-                    @Html.ActionLink("Sobre Nosotros", "About", "Home", new { @class = "nav-link" })
+                <li class="nav-link">
+                    @Html.ActionLink("Sobre Nosotros", "About", "Home")
                 </li>
-                <li>
-                    @Html.ActionLink("Contacto", "CreateConsulta", "Home", new { @class = "nav-link" })
+                <li class="nav-link">
+                    @Html.ActionLink("Contacto", "CreateConsulta", "Home")
                 </li>
                 @if (Request.IsAuthenticated)
                 {
-                    <li>
+                    <li class="nav-link">
 
-                        @Html.ActionLink("Mantener Eventos", "Index", "Eventos", new { @class = "nav-link" })
+                        @Html.ActionLink("Eventos", "Index", "Eventos")
                     </li>
                 }
                 
