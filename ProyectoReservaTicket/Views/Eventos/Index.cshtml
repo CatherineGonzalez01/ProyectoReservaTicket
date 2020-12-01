@@ -1,0 +1,53 @@
+﻿@model IEnumerable<ProyectoReservaTicket.Models.Evento>
+
+@{
+    ViewBag.Title = "Index";
+}
+<br />
+<br />
+<h2>Eventos</h2>
+
+<p>
+    @Html.ActionLink("Crear Nuevo Evento", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FechaEvento)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Lugar)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CostoEntrada)
+        </th>
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.FechaEvento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Lugar)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.CostoEntrada)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.EventoID }) |
+                @Html.ActionLink("Detallar", "Details", new { id = item.EventoID }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.EventoID })
+            </td>
+        </tr>
+    }
+
+</table>

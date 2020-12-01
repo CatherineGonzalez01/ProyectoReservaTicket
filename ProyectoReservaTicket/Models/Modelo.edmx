@@ -1,0 +1,187 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+    <Schema Namespace="ReservaTicketModel.Store" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Animador">
+          <Key>
+            <PropertyRef Name="animadorID" />
+          </Key>
+          <Property Name="animadorID" Type="int" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" />
+          <Property Name="Apellido" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono" Type="nchar" MaxLength="10" />
+        </EntityType>
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="EventoID" />
+          </Key>
+          <Property Name="EventoID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="Nombre" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="FechaEvento" Type="date" Nullable="false" />
+          <Property Name="Lugar" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CostoEntrada" Type="money" Nullable="false" />
+        </EntityType>
+        <EntityType Name="Reserva">
+          <Key>
+            <PropertyRef Name="ReservaID" />
+          </Key>
+          <Property Name="ReservaID" Type="int" StoreGeneratedPattern="Identity" Nullable="false" />
+          <Property Name="FechaReserva" Type="date" Nullable="false" />
+          <Property Name="EventoID" Type="int" Nullable="false" />
+          <Property Name="NombreAepllido" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Direccion" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Telefono" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="Email" Type="varchar" MaxLength="50" Nullable="false" />
+          <Property Name="CantidadTicket" Type="int" Nullable="false" />
+          <Property Name="TotalPagar" Type="money" Nullable="false" />
+        </EntityType>
+        <Association Name="FK_Reserva_Evento">
+          <End Role="Evento" Type="Self.Evento" Multiplicity="1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="EventoID" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="EventoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ReservaTicketModelStoreContainer">
+          <EntitySet Name="Animador" EntityType="Self.Animador" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Evento" EntityType="Self.Evento" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Reserva" EntityType="Self.Reserva" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK_Reserva_Evento" Association="Self.FK_Reserva_Evento">
+            <End Role="Evento" EntitySet="Evento" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema></edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="ReservaTicketModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Evento">
+          <Key>
+            <PropertyRef Name="EventoID" />
+          </Key>
+          <Property Name="EventoID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="FechaEvento" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="Lugar" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CostoEntrada" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Reserva" Relationship="Self.FK_Reserva_Evento" FromRole="Evento" ToRole="Reserva" />
+        </EntityType>
+        <EntityType Name="Reserva">
+          <Key>
+            <PropertyRef Name="ReservaID" />
+          </Key>
+          <Property Name="ReservaID" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FechaReserva" Type="DateTime" Nullable="false" Precision="0" />
+          <Property Name="EventoID" Type="Int32" Nullable="false" />
+          <Property Name="NombreAepllido" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Direccion" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Telefono" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="Email" Type="String" MaxLength="50" FixedLength="false" Unicode="false" Nullable="false" />
+          <Property Name="CantidadTicket" Type="Int32" Nullable="false" />
+          <Property Name="TotalPagar" Type="Decimal" Precision="19" Scale="4" Nullable="false" />
+          <NavigationProperty Name="Evento" Relationship="Self.FK_Reserva_Evento" FromRole="Reserva" ToRole="Evento" />
+        </EntityType>
+        <Association Name="FK_Reserva_Evento">
+          <End Role="Evento" Type="Self.Evento" Multiplicity="1" />
+          <End Role="Reserva" Type="Self.Reserva" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Evento">
+              <PropertyRef Name="EventoID" />
+            </Principal>
+            <Dependent Role="Reserva">
+              <PropertyRef Name="EventoID" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="ReservaTicketEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Evento" EntityType="Self.Evento" />
+          <EntitySet Name="Reserva" EntityType="Self.Reserva" />
+          <AssociationSet Name="FK_Reserva_Evento" Association="Self.FK_Reserva_Evento">
+            <End Role="Evento" EntitySet="Evento" />
+            <End Role="Reserva" EntitySet="Reserva" />
+          </AssociationSet>
+          <EntitySet Name="Animador" EntityType="ReservaTicketModel.Animador" />
+        </EntityContainer>
+        <EntityType Name="Animador">
+          <Key>
+            <PropertyRef Name="animadorID" />
+          </Key>
+          <Property Name="animadorID" Type="Int32" Nullable="false" />
+          <Property Name="Nombre" Type="String" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Apellido" Type="String" Nullable="false" MaxLength="50" FixedLength="false" Unicode="false" />
+          <Property Name="Telefono" Type="String" MaxLength="10" FixedLength="true" Unicode="true" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="ReservaTicketModelStoreContainer" CdmEntityContainer="ReservaTicketEntities">
+          <EntitySetMapping Name="Evento">
+            <EntityTypeMapping TypeName="ReservaTicketModel.Evento">
+              <MappingFragment StoreEntitySet="Evento">
+                <ScalarProperty Name="EventoID" ColumnName="EventoID" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="FechaEvento" ColumnName="FechaEvento" />
+                <ScalarProperty Name="Lugar" ColumnName="Lugar" />
+                <ScalarProperty Name="CostoEntrada" ColumnName="CostoEntrada" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Reserva">
+            <EntityTypeMapping TypeName="ReservaTicketModel.Reserva">
+              <MappingFragment StoreEntitySet="Reserva">
+                <ScalarProperty Name="ReservaID" ColumnName="ReservaID" />
+                <ScalarProperty Name="FechaReserva" ColumnName="FechaReserva" />
+                <ScalarProperty Name="EventoID" ColumnName="EventoID" />
+                <ScalarProperty Name="NombreAepllido" ColumnName="NombreAepllido" />
+                <ScalarProperty Name="Direccion" ColumnName="Direccion" />
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Email" ColumnName="Email" />
+                <ScalarProperty Name="CantidadTicket" ColumnName="CantidadTicket" />
+                <ScalarProperty Name="TotalPagar" ColumnName="TotalPagar" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Animador">
+            <EntityTypeMapping TypeName="ReservaTicketModel.Animador">
+              <MappingFragment StoreEntitySet="Animador">
+                <ScalarProperty Name="Telefono" ColumnName="Telefono" />
+                <ScalarProperty Name="Apellido" ColumnName="Apellido" />
+                <ScalarProperty Name="Nombre" ColumnName="Nombre" />
+                <ScalarProperty Name="animadorID" ColumnName="animadorID" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

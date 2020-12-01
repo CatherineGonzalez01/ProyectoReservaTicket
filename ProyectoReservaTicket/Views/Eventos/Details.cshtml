@@ -1,0 +1,50 @@
+﻿@model ProyectoReservaTicket.Models.Evento
+
+@{
+    ViewBag.Title = "Detalle";
+}
+<br />
+<br />
+<h2>Detalle del Evento</h2>
+
+<div>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.FechaEvento)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.FechaEvento)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Lugar)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Lugar)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.CostoEntrada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.CostoEntrada)
+        </dd>
+
+    </dl>
+</div>
+<p>
+    @Html.ActionLink("Editar", "Edit", new { id = Model.EventoID }) |
+    @Html.ActionLink("Volver a la lista", "Index")
+</p>
