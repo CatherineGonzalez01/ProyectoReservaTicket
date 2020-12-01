@@ -9,7 +9,7 @@
         <EntityTypeShape EntityType="ReservaTicketModel.Reserva" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="ReservaTicketModel.FK_Reserva_Evento" ManuallyRouted="false" />
         <EntityTypeShape EntityType="ReservaTicketModel.Animador" Width="1.5" PointX="5.5" PointY="1.25" />
-        <EntityTypeShape EntityType="ReservaTicketModel.Consulta" Width="1.5" PointX="7.875" PointY="0.875" />
+        <EntityTypeShape EntityType="ReservaTicketModel.Consultas" Width="1.5" PointX="0.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

@@ -12,12 +12,12 @@ namespace ProyectoReservaTicket.Models
     using System;
     using System.Collections.Generic;
     
-    public partial class Consulta
+    public partial class Consultas
     {
         public int consultaID { get; set; }
         public string Nombre { get; set; }
         public string Apellido { get; set; }
         public string Telefono { get; set; }
-        public string consulta1 { get; set; }
+        public string consulta { get; set; }
     }
 }
