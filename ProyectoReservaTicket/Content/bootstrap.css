@@ -10130,4 +10130,9 @@ a {
 }
 li a{
     color: white;
+    
 }
+    li a:hover {
+        color: gray;
+        text-decoration: none;
+    }

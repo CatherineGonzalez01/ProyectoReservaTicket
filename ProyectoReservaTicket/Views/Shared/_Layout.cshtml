@@ -34,7 +34,13 @@
                         @Html.ActionLink("Eventos", "Index", "Eventos")
                     </li>
                 }
-                
+                @if (Request.IsAuthenticated)
+                {
+                    <li class="nav-link">
+
+                        @Html.ActionLink("Reservas", "Index", "Reserva")
+                    </li>
+                }
             </ul>
            @Html.Partial("_LoginPartial")
 
