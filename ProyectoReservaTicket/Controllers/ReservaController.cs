@@ -1,6 +1,7 @@
 ﻿using ProyectoReservaTicket.Models;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -19,6 +20,8 @@ namespace ProyectoReservaTicket.Controllers
         // GET: Eventos/Create
         public ActionResult Create()
         {
+            ViewBag.eventos = db.Evento.ToList();
+            
             return View();
         }
 

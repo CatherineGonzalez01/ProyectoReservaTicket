@@ -29,7 +29,8 @@ namespace ProyectoReservaTicket.Models
         public int CantidadTicket { get; set; }
         [Display(Name = "Total a Pagar")]
         public decimal TotalPagar { get; set; }
-    
+
         public virtual Evento Evento { get; set; }
+       
     }
 }
