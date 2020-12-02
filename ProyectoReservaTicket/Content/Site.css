@@ -35,17 +35,18 @@ min-height: 285px;
 display: flex;
 align-items: center;
 justify-content: center;
-background-image: url(../img/insertion-1800x450.jpg);
+background-image: url(../img/video2.gif);
 background-size: cover;
 background-repeat: no-repeat;
 }
-    .tm-tag-line h2 {
+    .tm-tag-line h2 a {
         font-size: 2rem;
         color: white;
         position: relative;
+        text-align: left;
         font-weight: 300;
         margin-bottom: 0;
         padding-left: 20px;
+        padding-top: 50px;
         padding-right: 20px;
-        text-align: center;
     }
