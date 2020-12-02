@@ -18,6 +18,7 @@ namespace ProyectoReservaTicket.Controllers
         }
 
         // GET: Eventos/Create
+        [Authorize]
         public ActionResult Create()
         {
             ViewBag.eventos = db.Evento.ToList();
